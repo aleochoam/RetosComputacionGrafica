@@ -38,10 +38,10 @@ public class Reto2 extends JPanel{
        Insets insets = getInsets();
        w =  500;
        h =  500;
-      /* xMax = xMax + (w/4);
-       yMax = yMax + (w/4);
-       xMin = xMin - (w/4);
-       yMin = yMin - (h/4);*/
+      /* yMax = h/2 - yMax;
+       xMin = xMin + w/2;
+       yMin = h/2 - yMin;
+       xMax = xMax + w/2;*/
        drawLines();
 
     }
@@ -56,14 +56,15 @@ public class Reto2 extends JPanel{
             int x1 = Math.abs(r.nextInt())%10 * w -w/2;
             int y1 = Math.abs(r.nextInt())%10 * h -h/2;
 */
-            int xp0 = (int) (Math.random() * w);
-            int yp0 = (int) (Math.random() * h);
+            int xp0 = (int) (Math.random() * w - w/2);
+            int yp0 = (int) (Math.random() * h - h/2);
 
-            int xp1 = (int) (Math.random() * w);
-            int yp1 = (int) (Math.random() * h);
+            int xp1 = (int) (Math.random() * w - w/2);
+            int yp1 = (int) (Math.random() * h - h/2);
 
             //g2d.drawLine(xp0, yp0, xp1, yp1);
             CHAlgol(xp0,yp0, xp1,yp1);
+           // g2d.drawLine(xp0,yp0,xp1,yp1);
 
         }
     }
@@ -101,7 +102,7 @@ public class Reto2 extends JPanel{
                 break;
             }else{
                 int  x = 0, y = 0;
-                int outCodeOut = outCode0 != 0 ? outCode0 : outCode1;
+                int outCodeOut = outCode0 !=0 ? outCode0 : outCode1;
 
                 if ((outCodeOut & TOP) != 0) {
                     x = x0 + (x1-x0) * (yMax-y0) / (y1-y0);
@@ -125,7 +126,7 @@ public class Reto2 extends JPanel{
                     outCode0 = computeOutCode(x0, y0);
                 } else {
                     g2d.setColor(Color.RED);
-                    g2d.drawLine(x + w/2,h/2 - y,x1 + w/2,h/2 - y1);
+                    g2d.drawLine(x1 + w/2,h/2 - y1,x + w/2,h/2 - y);
                     x1 = x;
                     y1 = y;
                     outCode1 = computeOutCode (x1, y1);
