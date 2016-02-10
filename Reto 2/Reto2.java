@@ -24,6 +24,8 @@ public class Reto2 extends JPanel{
     private int h, w;
     private Graphics2D g2d;
 
+    private double tI = 0.0, tF = 1.0;
+
     @Override
     public void paintComponent(Graphics g) {
        super.paintComponent(g);
@@ -54,7 +56,8 @@ public class Reto2 extends JPanel{
             int xp1 = (int) (Math.random() * w - w/2);
             int yp1 = (int) (Math.random() * h - h/2);
 
-            CHAlgol(xp0,yp0, xp1,yp1);
+            //CHAlgol(xp0,yp0, xp1,yp1);
+            barskyAl(xp0,yp0, xp1,yp1);
         }
 
         System.out.println("Cohen–Sutherland algorithm: " + (System.currentTimeMillis() - tiempoInicial) + " milisegundos");
@@ -127,9 +130,69 @@ public class Reto2 extends JPanel{
 
     }
 
-    public void barskyAl(x0,y0,x1,y1){
+    public boolean isInside(int x, int y){
+        return (x>xMin && x < xMax && y < yMax && y > yMin);
+    }
 
-    }  
+    public void barskyAl(int x0, int y0, int x1, int y1){
+        int dx, dy;
+
+
+        dx = x1-x0;
+        dy = y1-y0;
+
+        if (dx == 0 && dy == 0 && isInside(x0, y0)) {
+            //esta adentro
+            g2d.setColor(Color.BLUE);
+            g2d.drawLine(x0 + w/2, h/2 -y0, x1 + w/2, h/2 -y1);
+            return;
+        }
+
+        tI = 0;
+        tF = 1;
+
+        if (calcularT(- x0 + xMin, dx) &&
+            calcularT(x0 - xMax, -dx)  &&
+            calcularT(- y0 + yMin, dy) &&
+            calcularT(y0 - yMax, -dy)) {
+
+            if (tF < 1) {
+                x1 = x0 + (int)tF * dx;
+                y1 = y0 + (int)tF * dy;
+            }
+
+            if (tI > 0) {
+                x0 += tI * dx;
+                y0 += tI * dy;
+            }
+        }
+    }
+
+    /**
+     * calcula si el segmento intercepta o no
+     * @param  num   numerador
+     * @param  denom denominador
+     * @return       si intercepta con algun lado del cuadro
+     * true si esta adentro del todo, falso si no
+     */
+    public boolean calcularT(int num, int denom){
+        double t;
+        if (denom == 0) {
+            return num <= 0;
+        }
+
+        t = num/denom;
+
+        if (denom > 0) {
+            if (t > tF) return false;
+            if (t > tI) tI = t;
+        } else {
+            if (t < tI) return false;
+            if (t < tF) tF = t;
+        }
+
+        return true;
+    }
 
     public static void main(String[] args) {
         // Crear un nuevo Frame
