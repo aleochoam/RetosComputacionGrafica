@@ -38,35 +38,26 @@ public class Reto2 extends JPanel{
        Insets insets = getInsets();
        w =  500;
        h =  500;
-      /* yMax = h/2 - yMax;
-       xMin = xMin + w/2;
-       yMin = h/2 - yMin;
-       xMax = xMax + w/2;*/
        drawLines();
 
     }
 
     public void drawLines(){
         Random r = new Random();
-        for (int i = 0; i<10000; i++) {
-/*
-            int x0 = Math.abs(r.nextInt())%10 * w -w/2;
-            int y0 = Math.abs(r.nextInt())%10 * h -h/2;
 
-            int x1 = Math.abs(r.nextInt())%10 * w -w/2;
-            int y1 = Math.abs(r.nextInt())%10 * h -h/2;
-*/
+        long tiempoInicial = System.currentTimeMillis();
+        for (int i = 0; i<10000; i++) {
+
             int xp0 = (int) (Math.random() * w - w/2);
             int yp0 = (int) (Math.random() * h - h/2);
 
             int xp1 = (int) (Math.random() * w - w/2);
             int yp1 = (int) (Math.random() * h - h/2);
 
-            //g2d.drawLine(xp0, yp0, xp1, yp1);
             CHAlgol(xp0,yp0, xp1,yp1);
-           // g2d.drawLine(xp0,yp0,xp1,yp1);
-
         }
+
+        System.out.println("Cohen–Sutherland algorithm: " + (System.currentTimeMillis() - tiempoInicial) + " milisegundos");
     }
 
     /*
