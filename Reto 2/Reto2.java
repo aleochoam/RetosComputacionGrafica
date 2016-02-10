@@ -127,7 +127,9 @@ public class Reto2 extends JPanel{
 
     }
 
+    public void barskyAl(x0,y0,x1,y1){
 
+    }  
 
     public static void main(String[] args) {
         // Crear un nuevo Frame
