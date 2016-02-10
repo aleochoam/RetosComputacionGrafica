@@ -18,8 +18,8 @@ public class Reto2 extends JPanel{
 
     private static  int yMax = 125;
     private static  int yMin = -125;
-    private static  int xMax = -125;
-    private static  int xMin = 125;
+    private static  int xMax = 125;
+    private static  int xMin = -125;
 
     private int h, w;
     private Graphics2D g2d;
@@ -36,12 +36,12 @@ public class Reto2 extends JPanel{
        Dimension size = getSize();
        // Insets son los bordes y los títulos de la ventana.
        Insets insets = getInsets();
-       w =  size.width - insets.left - insets.right;
-       h =  size.height - insets.top - insets.bottom;
-       xMax = xMax + w/2;
-       yMax = yMax + h/2;
-       xMin = xMin - w/2;
-       yMin = yMin - h/2;
+       w =  500;
+       h =  500;
+      /* xMax = xMax + (w/4);
+       yMax = yMax + (w/4);
+       xMin = xMin - (w/4);
+       yMin = yMin - (h/4);*/
        drawLines();
 
     }
@@ -62,8 +62,9 @@ public class Reto2 extends JPanel{
             int xp1 = (int) (Math.random() * w);
             int yp1 = (int) (Math.random() * h);
 
-            g2d.drawLine(xp0, yp0, xp1, yp1);
-            CHAlgol(xp0, yp0, xp1, yp1);
+            //g2d.drawLine(xp0, yp0, xp1, yp1);
+            CHAlgol(xp0,yp0, xp1,yp1);
+
         }
     }
 
@@ -71,7 +72,7 @@ public class Reto2 extends JPanel{
      *Tomado de https://en.wikipedia.org/wiki/Cohen%E2%80%93Sutherland_algorithm
      */
 
-    public int computeOutCode(double x, double y){
+    public int computeOutCode(int x, int y){
         int code = INSIDE;
         if (x < xMin)
             code |= LEFT;
@@ -88,16 +89,18 @@ public class Reto2 extends JPanel{
     public void CHAlgol(int x0, int y0, int x1, int y1){
         int outCode0 = computeOutCode(x0, y0);
         int outCode1 = computeOutCode(x1, y1);
-        boolean accept = false;
 
         while(true){
             if((outCode0 | outCode1) == 0){
-                accept = true;
+                g2d.setColor(Color.BLUE);
+                g2d.drawLine(x0 + w/2,h/2 - y0,x1 + w/2,h/2 - y1);
                 break;
             }else if ((outCode0 & outCode1) != 0 ) {
+                g2d.setColor(Color.RED);
+                g2d.drawLine(x0 + w/2,h/2 - y0,x1 + w/2,h/2 - y1);
                 break;
             }else{
-                int x = -1, y = -1;
+                int  x = 0, y = 0;
                 int outCodeOut = outCode0 != 0 ? outCode0 : outCode1;
 
                 if ((outCodeOut & TOP) != 0) {
@@ -115,10 +118,14 @@ public class Reto2 extends JPanel{
                 }
 
                 if (outCodeOut == outCode0) {
+                    g2d.setColor(Color.RED);
+                    g2d.drawLine(x0 + w/2,h/2 - y0,x + w/2,h/2 - y);
                     x0 = x;
                     y0 = y;
                     outCode0 = computeOutCode(x0, y0);
                 } else {
+                    g2d.setColor(Color.RED);
+                    g2d.drawLine(x + w/2,h/2 - y,x1 + w/2,h/2 - y1);
                     x1 = x;
                     y1 = y;
                     outCode1 = computeOutCode (x1, y1);
@@ -126,12 +133,6 @@ public class Reto2 extends JPanel{
             }
         }
 
-        if(accept){
-           //DrawRectangle(xMin,yMin,xMax,ymMax);
-            g2d.setColor(Color.RED);
-
-            g2d.drawLine(x0,y0,x1,y1);
-        }
     }
 
 
