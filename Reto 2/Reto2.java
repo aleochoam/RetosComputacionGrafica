@@ -208,6 +208,4 @@ public class Reto2 extends JPanel{
         // Mostrar el frame
         frame.setVisible(true);
     }
-
-
 }
