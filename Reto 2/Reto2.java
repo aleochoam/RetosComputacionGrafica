@@ -56,11 +56,27 @@ public class Reto2 extends JPanel{
             int xp1 = (int) (Math.random() * w - w/2);
             int yp1 = (int) (Math.random() * h - h/2);
 
-            //CHAlgol(xp0,yp0, xp1,yp1);
-            barskyAl(xp0,yp0, xp1,yp1);
+            CHAlgol(xp0,yp0, xp1,yp1);
+            //barskyAl(xp0,yp0, xp1,yp1);
         }
 
         System.out.println("Cohen–Sutherland algorithm: " + (System.currentTimeMillis() - tiempoInicial) + " milisegundos");
+
+        long tiempoInicial2 = System.currentTimeMillis();
+
+        for (int i = 0; i<10000; i++) {
+
+            int xp0 = (int) (Math.random() * w - w/2);
+            int yp0 = (int) (Math.random() * h - h/2);
+
+            int xp1 = (int) (Math.random() * w - w/2);
+            int yp1 = (int) (Math.random() * h - h/2);
+
+            //CHAlgol(xp0,yp0, xp1,yp1);
+            barskyAl(xp0,yp0, xp1,yp1);
+        }
+        System.out.println("Liang–Barsky algorithm: " + (System.currentTimeMillis() - tiempoInicial2) + " milisegundos");
+
     }
 
     /*
