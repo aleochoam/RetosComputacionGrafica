@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 
 import java.util.Random;
 
+import Maths.*;
+
 public class Reto extends JPanel{
     @Override
     public void paintComponent(Graphics g) {
