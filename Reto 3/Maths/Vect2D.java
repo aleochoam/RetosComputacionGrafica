@@ -30,6 +30,11 @@ public class Vect2D {
         return new Vect2D(cX, cY);
     }
 
+    public static Vect2D productoEscalar(Vect2D v, double u){
+        double[] comp = v.getComp();
+        return new Vect2D(comp[0] * u, comp[1] * u);
+    }
+
     public double productoPunto(Vect2D v1,Vect2D v2){
         double cX = v1.getComp()[0] * v2.getComp()[0];
         double cY = v1.getComp()[1] * v2.getComp()[1];

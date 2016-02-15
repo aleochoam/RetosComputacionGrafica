@@ -34,6 +34,11 @@ public class Vect3D {
         return new Vect3D(cX, cY, cZ);
     }
 
+    public static Vect3D productoEscalar(Vect3D v, double u){
+        double[] comp = v.getComp();
+        return new Vect3D(comp[0] * u, comp[1] * u, comp[2] * u);
+    }
+
     public static double productoPunto(Vect3D v1,Vect3D v2){
         double cX = v1.getComp()[0] * v2.getComp()[0];
         double cY = v1.getComp()[1] * v2.getComp()[1];

@@ -2,6 +2,9 @@ package Maths;
 /**
  * x = x0 + t(dX)
  * y = y0 + t(dY)
+ *
+ * https://mx.answers.yahoo.com/question/index?qid=20100211150225AAmgM4V
+ * http://www.intmath.com/matrices-determinants/1-determinants.php
  */
 public class EcParSR2D {
 
@@ -26,5 +29,9 @@ public class EcParSR2D {
     public String toString(){
         return ("x = " + x0 + " + t(" + dX + ")\n") +
         	   ("y = " + y0 + " + t(" + dY + ")");
+    }
+
+    public static void hallarInter(){
+        //mirar link
     }
 }
