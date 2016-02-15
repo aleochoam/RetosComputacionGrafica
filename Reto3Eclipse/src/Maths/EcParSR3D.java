@@ -19,15 +19,15 @@ public class EcParSR3D {
         dY = y1-y0;
         dZ = z1-z0;
     }
-
+    
     public static double evalX(EcParSR3D ecuacion,double t){
     	return ecuacion.x0 + t * ecuacion.dX;
     }
-
+    
 	public static double evalY(EcParSR3D ecuacion, double t){
 	    return ecuacion.y0 + t * ecuacion.dY;
 	}
-
+	
 	public static double evalZ(EcParSR3D ecuacion, double t){
 		return ecuacion.z0 + t * ecuacion.dZ;
 	}

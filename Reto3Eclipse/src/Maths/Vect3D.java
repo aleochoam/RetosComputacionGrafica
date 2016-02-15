@@ -41,17 +41,17 @@ public class Vect3D {
         double result = cX + cY + cZ;
         return result;
     }
-
+    
     public static Vect3D productoCruz(Vect3D v1, Vect3D v2){
-    	double x = (v1.getComp()[1] * v2.getComp()[2]) -
+    	double x = (v1.getComp()[1] * v2.getComp()[2]) - 
     			(v1.getComp()[2] * v2.getComp()[1]);
-    	double y = -((v1.getComp()[0] * v2.getComp()[2]) -
+    	double y = -((v1.getComp()[0] * v2.getComp()[2]) - 
 		        (v1.getComp()[2] * v2.getComp()[0]));
-    	double z = (v1.getComp()[0] * v2.getComp()[1]) -
+    	double z = (v1.getComp()[0] * v2.getComp()[1]) - 
     			(v1.getComp()[1] * v2.getComp()[0]);
     	return new Vect3D(x,y,z);
     }
-
+    
     public String toString() {
     	return "(" + componentes[0] + ", " + componentes[1] + ", " +
             componentes[2] + ")";

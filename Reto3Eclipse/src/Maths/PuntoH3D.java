@@ -1,9 +1,9 @@
 package Maths;
 
 public class PuntoH3D{
-
+	
 	private double[] punto= new double[4];
-
+	
 	public PuntoH3D(double x, double y, double z, double w){
 		punto[0] = x;
 		punto[1] = y;

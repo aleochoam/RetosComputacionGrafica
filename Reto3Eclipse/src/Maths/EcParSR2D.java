@@ -14,11 +14,11 @@ public class EcParSR2D {
         dX = x1-x0;
         dY = y1-y0;
     }
-
+    
     public static double evalX(EcParSR2D ecuacion,double t){
     	return ecuacion.x0 + t * ecuacion.dX;
     }
-
+    
 	public static double evalY(EcParSR2D ecuacion, double t){
 	    return ecuacion.y0 + t * ecuacion.dY;
 	}
