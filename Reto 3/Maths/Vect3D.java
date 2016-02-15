@@ -33,4 +33,12 @@ public class Vect3D {
         double cZ = v2.getComp()[2] - v2.getComp()[2];
         return new Vect3D(cX, cY, cZ);
     }
+
+    public double productoPunto(Vect3D v1,Vect3D v2){
+        double cX = v1.getComp()[0] * v2.getComp()[0];
+        double cY = v1.getComp()[1] * v2.getComp()[1];
+        double cZ = v1.getComp()[2] * v2.getComp()[2];
+        double result = cX + cY + cZ;
+        return result;
+    }
 }
