@@ -16,8 +16,8 @@ public class Matriz2D {
         if(fil1 != col2){
           throw new RuntimeException("No se pueden multiplicar las matrices");  
         }else{
-            for(int i = 0;i < result.length;i++){
-                for(int j = 0; j < result[i].length;j++){
+            for(int i = 0;i < fil1;i++){
+                for(int j = 0; j <col2;j++){
                     for(int k = 0; k < col1;k++){
                         result[i][j] += m1[i][k] * m2[k][j];
                     }
