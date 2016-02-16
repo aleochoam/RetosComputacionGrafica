@@ -3,6 +3,14 @@ package Maths;
 public class Matriz2D {
     private double[][] matriz = new double[3][3];
 
+    public Matriz2D(){
+
+    }
+
+    public Matriz2D(double[][] m){
+        matriz = m;
+    }
+
     public double[][] getMatriz(){
         return matriz;
     }
@@ -14,7 +22,7 @@ public class Matriz2D {
         int col2 = m2[0].length;
         double [][] result = new double[fil1][col2];
         if(fil1 != col2){
-          throw new RuntimeException("No se pueden multiplicar las matrices");  
+          throw new RuntimeException("No se pueden multiplicar las matrices");
         }else{
             for(int i = 0;i < fil1;i++){
                 for(int j = 0; j <col2;j++){
@@ -25,6 +33,18 @@ public class Matriz2D {
             }
         }
         return result;
+    }
+
+    public String toString(){
+        String res = "";
+        for (int i = 0; i<matriz.length; i++) {
+            for (int j = 0; j<matriz[i].length; j++) {
+                res = res + matriz[i][j] + ", ";
+            }
+            res = res + "\n";
+        }
+
+        return res;
     }
 
 }
