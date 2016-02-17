@@ -31,7 +31,12 @@ public class EcParSR2D {
         	   ("y = " + y0 + " + t(" + dY + ")");
     }
 
-    public static void hallarInter(){
-        //mirar link
+    public static void hallarInter(EcParSR2D ec1, EcParSR2D ec2){
+        double[][] A = new double[2][2];
+        double[]   B = new double[3];
+
+        A[0][0] = ec1.dX;
+        A[1][0] = ec1.dY;
+
     }
 }
