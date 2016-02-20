@@ -2,16 +2,10 @@ import Maths.*;
 
 public class Mainclass {
     public static void main(String[] args) {
-        double[][] m1 = {{1,2,-3},
-                         {4,0,-2}};
+        EcParSR2D ec1 = new EcParSR2D(5, 15, 8, 20);
+        EcParSR2D ec2 = new EcParSR2D(-12, -14, -8, -7);
 
-        double[][] m2 = {{3,1},
-                         {2,4},
-                         {-1,5}};
-
-        Matriz2D res = new Matriz2D(Matriz2D.multiplicar(m1,m2));
-
-        System.out.print(res);
+        EcParSR2D.hallarInter(ec1, ec2);
 
     }
 }

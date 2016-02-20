@@ -32,6 +32,41 @@ public class EcParSR3D {
 		return ecuacion.z0 + t * ecuacion.dZ;
 	}
 
+    public static void hallarInter(EcParSR3D ec1, EcParSR3D ec2){
+        double[][] A = new double[3][3];
+        double[]   B = new double[3];
+
+        A[0][0] = ec1.dX;
+        A[1][0] = ec1.dY;
+        A[0][1] = (-1)*ec2.dX;
+        A[1][1] = (-1)*ec2.dY;
+
+        B[0] = ec2.x0 + (-1)*ec1.x0;
+        B[1] = ec2.y0 + (-1)*ec1.y0;
+
+
+        double[][] xM = A;
+        for (int i = 0; i<A.length; i++) {
+            xM[i][0] = B[i];
+        }
+
+        double[][] yM = A;
+        for (int i = 0; i<A.length; i++) {
+            yM[i][1] = B[i];
+        }
+
+
+        double detA = Matriz2D.determinante(A);
+        double detX = Matriz2D.determinante(xM);
+        double detY = Matriz2D.determinante(yM);
+
+        double x = detX/detA;
+        double y = detY/detA;
+
+        System.out.print("x = " + x + ", y = " + y);
+
+    }
+
     public String toString(){
         return ("x = " + x0 + " + t(" + dX + ")\n") +
                ("y = " + y0 + " + t(" +dY + ")\n" ) +
