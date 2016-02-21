@@ -20,6 +20,12 @@ public class Vect3D {
         return componentes;
     }
 
+    public static double getMagnitud(Vect3D v){
+        return Math.sqrt(Math.pow(v.componentes[0], 2) +
+                         Math.pow(v.componentes[1], 2) +
+                         Math.pow(v.componentes[1], 2));
+    }
+
     public static Vect3D suma(Vect3D v1, Vect3D v2){
         double cX = v1.getComp()[0] + v2.getComp()[0];
         double cY = v2.getComp()[1] + v2.getComp()[1];

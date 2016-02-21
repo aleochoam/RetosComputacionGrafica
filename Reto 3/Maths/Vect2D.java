@@ -18,15 +18,19 @@ public class Vect2D {
         return componentes;
     }
 
+    public static double getMagnitud(Vect2D v){
+        return Math.sqrt(Math.pow(v.componentes[0], 2) + Math.pow(v.componentes[1], 2));
+    }
+
     public static Vect2D suma(Vect2D v1, Vect2D v2){
         double cX = v1.getComp()[0] + v2.getComp()[0];
-        double cY = v2.getComp()[1] + v2.getComp()[1];
+        double cY = v1.getComp()[1] + v2.getComp()[1];
         return new Vect2D(cX, cY);
     }
 
     public static Vect2D resta(Vect2D v1, Vect2D v2){
         double cX = v1.getComp()[0] - v2.getComp()[0];
-        double cY = v2.getComp()[1] - v2.getComp()[1];
+        double cY = v1.getComp()[1] - v2.getComp()[1];
         return new Vect2D(cX, cY);
     }
 
@@ -40,6 +44,10 @@ public class Vect2D {
         double cY = v1.getComp()[1] * v2.getComp()[1];
         double result = cX + cY;
         return result;
+    }
+
+    public String toString(){
+        return "[ " + componentes[0] + ", " + componentes[1] + " ]";
     }
 
 }
