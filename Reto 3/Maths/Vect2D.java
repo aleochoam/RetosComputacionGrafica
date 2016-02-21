@@ -19,7 +19,8 @@ public class Vect2D {
     }
 
     public static double getMagnitud(Vect2D v){
-        return Math.sqrt(Math.pow(v.componentes[0], 2) + Math.pow(v.componentes[1], 2));
+        return Math.sqrt(Math.pow(v.componentes[0], 2) +
+                         Math.pow(v.componentes[1], 2));
     }
 
     public static Vect2D suma(Vect2D v1, Vect2D v2){
