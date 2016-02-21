@@ -33,8 +33,8 @@ public class EcParSR3D {
 	}
 
     public static void hallarInter(EcParSR3D ec1, EcParSR3D ec2){
-        double[][] A = new double[3][3];
-        double[]   B = new double[3];
+        double[][] A = new double[2][2];
+        double[]   B = new double[2];
 
         A[0][0] = ec1.dX;
         A[1][0] = ec1.dY;
@@ -45,26 +45,36 @@ public class EcParSR3D {
         B[1] = ec2.y0 + (-1)*ec1.y0;
 
 
-        double[][] xM = A;
+        double[][] xM = new double[A.length][A.length];
+        xM[0][1] = A[0][1];
+        xM[1][1] = A[1][1];
+
         for (int i = 0; i<A.length; i++) {
             xM[i][0] = B[i];
         }
 
-        double[][] yM = A;
+        double[][] yM = new double[A.length][A.length];
+        yM[0][0] = A[0][0];
+        yM[1][0] = A[1][0];
+
+
         for (int i = 0; i<A.length; i++) {
             yM[i][1] = B[i];
         }
-
 
         double detA = Matriz2D.determinante(A);
         double detX = Matriz2D.determinante(xM);
         double detY = Matriz2D.determinante(yM);
 
-        double x = detX/detA;
-        double y = detY/detA;
 
-        System.out.print("x = " + x + ", y = " + y);
+        double t = detX/detA;
+        double u = detY/detA;
 
+        double x = evalX(ec1, t);
+        double y = evalY(ec1, t);
+        double z = evalZ(ec1, t);
+
+        System.out.println("x = " + x + " y = " + y + " z = " + z);
     }
 
     public String toString(){

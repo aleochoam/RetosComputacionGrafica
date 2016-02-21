@@ -3,9 +3,6 @@ package Maths;
 public class Matriz2D {
     private double[][] matriz = new double[3][3];
 
-    public Matriz2D(){
-
-    }
 
     public Matriz2D(double[][] m){
         matriz = m;
@@ -36,7 +33,7 @@ public class Matriz2D {
     }
 
     /**
-     * Sacado dehttp://professorjava.weebly.com/matrix-determinant.html
+     * Sacado de http://professorjava.weebly.com/matrix-determinant.html
      * @param  m la matriz
      * @return   el determinante de la matriz
      */

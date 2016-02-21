@@ -2,10 +2,12 @@ import Maths.*;
 
 public class Mainclass {
     public static void main(String[] args) {
-        EcParSR2D ec1 = new EcParSR2D(5, 15, 8, 20);
-        EcParSR2D ec2 = new EcParSR2D(-12, -14, -8, -7);
+        EcParSR3D ec1 = new EcParSR3D(5, 15, 16, 8, 20, 23);
+        EcParSR3D ec2 = new EcParSR3D(-12, -14, -25, -8, -7, -15);
 
-        EcParSR2D.hallarInter(ec1, ec2);
-
-    }
+        EcParSR3D.hallarInter(ec1, ec2);
+/*
+        double[][] m = {{3, -4}, {5,7}};
+        System.out.print(Matriz2D.determinante(m));
+    */}
 }
