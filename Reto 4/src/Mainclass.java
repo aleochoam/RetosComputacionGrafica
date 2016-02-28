@@ -24,11 +24,10 @@ public class Mainclass extends JPanel{
 			JFrame frame = new JFrame("Chocolatina");
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        frame.add(new Mainclass());
-	        frame.setSize(1000, 1000);
+	        frame.setSize(500, 500);
 	        frame.setLocationRelativeTo(null);
 	        frame.setVisible(true);
 		}
-		
 	}
 	
 	@Override
@@ -52,22 +51,14 @@ public class Mainclass extends JPanel{
 		
 		PuntoH2D[] puntos = chocolatina.getPuntos();
 		int[][] aristas = Chocolatina.aristas;
-		System.err.println(aristas.length);
 		
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < aristas.length; i++) {
 			PuntoH2D p1 = puntos[aristas[i][0]];
 			PuntoH2D p2 = puntos[aristas[i][1]];
 			
-			System.err.println("Dibujando la linea de " + p1 + " a "
-					+ p2);
-			
 			g2d.drawLine((int)p1.getPunto()[0] + w/2,h/2 -(int)p1.getPunto()[1], 
-					(int)p2.getPunto()[0] + w/2, h/2 -(int)p1.getPunto()[1]);
-			
+					(int)p2.getPunto()[0] + w/2, h/2 -(int)p2.getPunto()[1]);
 			
 		}
-		
-		
 	}
-
 }
