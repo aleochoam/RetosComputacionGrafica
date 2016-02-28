@@ -15,12 +15,15 @@ public class Escalacion extends Matriz2D {
 		matriz = m;
 	}
 	
-	public double[][] Escalar(PuntoH2D p){
-		double[][] temp = new double[2][1];
+	public PuntoH2D escalar(PuntoH2D p){
+		double[][] temp = new double[3][1];
 		temp[0][0] = p.getPunto()[0];
 		temp[1][0] = p.getPunto()[1];
-		return multiplicar(super.matriz, temp);
-	
-	}
+		temp[2][0] = p.getPunto()[2];
+		double[][] nuevoPunto = multiplicar(temp, super.matriz);
 
+		PuntoH2D res = new PuntoH2D(nuevoPunto[0][0], nuevoPunto[1][0], 1);
+		
+		return res;
+	}
 }
