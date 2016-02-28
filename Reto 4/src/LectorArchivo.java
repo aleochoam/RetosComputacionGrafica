@@ -13,6 +13,8 @@ public class LectorArchivo {
 			puntos[i][0] = sc.nextInt();
 			puntos[i][1] = sc.nextInt();
 		}
+
+		sc.close();
 		return puntos;
 	}
 }
