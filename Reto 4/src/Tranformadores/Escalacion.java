@@ -20,10 +20,7 @@ public class Escalacion extends Matriz2D {
 		temp[0][0] = p.getPunto()[0];
 		temp[1][0] = p.getPunto()[1];
 		temp[2][0] = p.getPunto()[2];
-		double[][] nuevoPunto = multiplicar(temp, super.matriz);
-
-		PuntoH2D res = new PuntoH2D(nuevoPunto[0][0], nuevoPunto[1][0], 1);
-		
-		return res;
+		double[][] nuevoPunto = multiplicar(matriz, temp);
+		return new PuntoH2D(nuevoPunto[0][0], nuevoPunto[1][0], 1);
 	}
 }

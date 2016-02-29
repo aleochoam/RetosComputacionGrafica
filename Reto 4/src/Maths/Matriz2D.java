@@ -21,7 +21,7 @@ public class Matriz2D {
         int fil2 = m2.length;
         int col2 = m2[0].length;
         double [][] result = new double[fil1][col2];
-        if(fil1 != col2){
+        if(col1 != fil2){
           throw new RuntimeException("No se pueden multiplicar las matrices");
         }else{
             for(int i = 0;i < fil1;i++){

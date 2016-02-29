@@ -64,7 +64,7 @@ public class Chocolatina{
 		return new Chocolatina(nuevosPuntos);
 	}
 
-	public Chocolatina subir(Chocolatina c1){
+	public Chocolatina derecha(Chocolatina c1){
 		Traslacion tras = new Traslacion(10, 0);
 		PuntoH2D[] puntos = c1.getPuntos();
 		PuntoH2D[] nuevosPuntos = new PuntoH2D[puntos.length];
@@ -76,7 +76,7 @@ public class Chocolatina{
 		return new Chocolatina(nuevosPuntos);
 	}
 
-	public Chocolatina bajar(Chocolatina c1){
+	public Chocolatina izquierda(Chocolatina c1){
 		Traslacion tras = new Traslacion(-10, 0);
 		PuntoH2D[] puntos = c1.getPuntos();
 		PuntoH2D[] nuevosPuntos = new PuntoH2D[puntos.length];
@@ -88,7 +88,7 @@ public class Chocolatina{
 		return new Chocolatina(nuevosPuntos);
 	}
 
-	public Chocolatina derecha(Chocolatina c1){
+	public Chocolatina subir(Chocolatina c1){
 		Traslacion tras = new Traslacion(0, 10);
 		PuntoH2D[] puntos = c1.getPuntos();
 		PuntoH2D[] nuevosPuntos = new PuntoH2D[puntos.length];
@@ -100,7 +100,7 @@ public class Chocolatina{
 		return new Chocolatina(nuevosPuntos);
 	}
 
-	public Chocolatina izquierda(Chocolatina c1){
+	public Chocolatina bajar(Chocolatina c1){
 		Traslacion tras = new Traslacion(0, -10);
 		PuntoH2D[] puntos = c1.getPuntos();
 		PuntoH2D[] nuevosPuntos = new PuntoH2D[puntos.length];

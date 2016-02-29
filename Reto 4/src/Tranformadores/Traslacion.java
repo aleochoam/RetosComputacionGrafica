@@ -15,11 +15,11 @@ public class Traslacion extends Matriz2D {
 	}
 	
 	public PuntoH2D trasladar(PuntoH2D p){
-		double[][] temp = new double[2][1];
+		double[][] temp = new double[3][1];
 		temp[0][0] = p.getPunto()[0];
 		temp[1][0] = p.getPunto()[1];
 		temp[2][0] = p.getPunto()[2];
-		double[][] nuevoPunto = multiplicar(temp, matriz);
+		double[][] nuevoPunto = multiplicar(matriz, temp);
 		return new PuntoH2D(nuevoPunto[0][0], nuevoPunto[1][0], 1);
 	}
 
