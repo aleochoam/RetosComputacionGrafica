@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -37,14 +39,14 @@ public class Ventana extends JPanel{
 	        frame.add(vent);
 	        frame.setSize(500, 500);
 	        frame.setLocationRelativeTo(null);
-	        frame.setVisible(true);        
-	        
-	        vent.getKeys();
-
+	        frame.setVisible(true);
 		}
 	}
 	
 	public Ventana(String archivo) {
+		KeyListener kl = new MyKeyListener();
+		addKeyListener(kl);
+		setFocusable(true);
 		chocolatina = new Chocolatina(archivo);
 	}
 
@@ -84,36 +86,75 @@ public class Ventana extends JPanel{
 	/**
 	 * metodo clave que debe leer el teclado y modificar la chocolatina
 	 */
-	public void getKeys(){
-		Scanner sc = new Scanner(System.in);
-		while (sc.hasNextLine()){
-			System.out.println("Ingrese una tecla");
-			char c = sc.nextLine().charAt(0);
-			
-			switch (c) {
+	public void doMov(char c){
+		switch (c) {
 			case 'w':
 				listaChocolatinas.add(chocolatina);
-				chocolatina = chocolatina.escGrande(chocolatina);
-				paintComponent(g2d);
+				chocolatina = chocolatina.subir(chocolatina);
+				repaint();
+				System.out.println(c);
+				
 				break;
 			case 'a':
+				listaChocolatinas.add(chocolatina);
+				chocolatina = chocolatina.izquierda(chocolatina);
+				repaint();
+				System.out.println(c);
 				break;
 			case 's':
+				listaChocolatinas.add(chocolatina);
+				chocolatina = chocolatina.bajar(chocolatina);
+				repaint();
+				System.out.println(c);
 				break;
 			case 'd':
+				listaChocolatinas.add(chocolatina);
+				chocolatina = chocolatina.derecha(chocolatina);
+				repaint();
+				System.out.println(c);
 				break;
 			case 'q':
+				listaChocolatinas.add(chocolatina);
+				chocolatina = chocolatina.rotarAntiReloj(chocolatina);
+				repaint();
+				System.out.println(c);
 				break;
 			case 'e':
+				listaChocolatinas.add(chocolatina);
+				chocolatina = chocolatina.rotarReloj(chocolatina);
+				repaint();
+				System.out.println(c);
 				break;
 			case '+':
+				listaChocolatinas.add(chocolatina);
+				chocolatina = chocolatina.escGrande(chocolatina);
+				repaint();
+				System.out.println(c);
 				break;
 			case '-':
+				listaChocolatinas.add(chocolatina);
+				chocolatina = chocolatina.escPeque(chocolatina);
+				repaint();
+				System.out.println(c);
+				break;
+			default:
+				System.out.println("Tecla no reconocida");
 				break;
 			}
-		}
-		sc.close();
-		
 	}
 	
+	class MyKeyListener implements KeyListener{
+
+		@Override
+		public void keyPressed(KeyEvent e) {}
+
+		@Override
+		public void keyReleased(KeyEvent e) {}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			doMov(e.getKeyChar());
+			//System.out.println(e.getKeyChar());
+		}
+	}
 }
