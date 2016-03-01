@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,12 +14,7 @@ import javax.swing.JPanel;
 import Maths.Matriz2D;
 import Maths.PuntoH2D;
 
-/**
- * Clase que maneja la ventana y dibuja la chocolatina
- * no se sabe como borrar la chocolatina y crear una nueva
- * @author Alejandro
- *
- */
+
 public class Ventana extends JPanel{
 	
 	private Graphics2D g2d;
@@ -29,19 +25,13 @@ public class Ventana extends JPanel{
 	private ArrayList<Chocolatina> listaChocolatinas = new ArrayList<>();
 
 	public static void main(String[] args) {
-		/*if(args.length <1){
-			System.out.println("Por favor ingrese un archivo de puntos como "
-					+ "parametro del programa");
-			System.exit(-1);
-		}else{*/
-			Ventana vent = new Ventana();
-			JFrame frame = new JFrame("Chocolatina");
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        frame.add(vent);
-	        frame.setSize(500, 500);
-	        frame.setLocationRelativeTo(null);
-	        frame.setVisible(true);
-		//}
+		Ventana vent = new Ventana();
+		JFrame frame = new JFrame("Chocolatina");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(vent);
+        frame.setSize(500, 500);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
 	}
 	
 	public Ventana() {
@@ -55,21 +45,28 @@ public class Ventana extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
-	
+		
+		g2d = (Graphics2D) g;	
+		g2d.setColor(Color.WHITE);
+		Rectangle2D r = new Rectangle2D.Double(0,0,w,h);
+		g2d.fill(r);
 		Dimension size = getSize();
 		java.awt.Insets insets = getInsets();
        
 		w =  size.width - insets.left - insets.right;
 		h =  size.height - insets.top - insets.bottom;
 	
-		g2d = (Graphics2D) g;
-	    g2d.setColor(Color.BLUE);
+
+	    g2d.setColor(Color.RED);
 	    g2d.drawLine(w/2, h, w/2, 0);
 	    g2d.drawLine(0, h/2, w, h/2);
+	    g2d.setColor(Color.BLUE);
 	    dibujarChocolate();
 	}	
 	
 	public void dibujarChocolate(){
+		
+		
 		
 		PuntoH2D[] puntos = chocolatina.getPuntos();
 		int[][] aristas = Chocolatina.aristas;
@@ -92,56 +89,49 @@ public class Ventana extends JPanel{
 			case 'w':
 				listaChocolatinas.add(chocolatina);
 				chocolatina = chocolatina.subir(chocolatina);
-				repaint();
 				//System.out.println(c);
-				
 				break;
 			case 'a':
 				listaChocolatinas.add(chocolatina);
 				chocolatina = chocolatina.izquierda(chocolatina);
-				repaint();
 				//System.out.println(c);
 				break;
 			case 's':
 				listaChocolatinas.add(chocolatina);
 				chocolatina = chocolatina.bajar(chocolatina);
-				repaint();
 				//System.out.println(c);
 				break;
 			case 'd':
 				listaChocolatinas.add(chocolatina);
 				chocolatina = chocolatina.derecha(chocolatina);
-				repaint();
 				//System.out.println(c);
 				break;
 			case 'q':
 				listaChocolatinas.add(chocolatina);
 				chocolatina = chocolatina.rotarAntiReloj(chocolatina);
-				repaint();
 				//System.out.println(c);
 				break;
 			case 'e':
 				listaChocolatinas.add(chocolatina);
 				chocolatina = chocolatina.rotarReloj(chocolatina);
-				repaint();
 				//System.out.println(c);
 				break;
 			case '+':
 				listaChocolatinas.add(chocolatina);
+				//Chocolatina aux = chocolatina.
 				chocolatina = chocolatina.escGrande(chocolatina);
-				repaint();
 				//System.out.println(c);
 				break;
 			case '-':
 				listaChocolatinas.add(chocolatina);
 				chocolatina = chocolatina.escPeque(chocolatina);
-				repaint();
 				//System.out.println(c);
 				break;
 			default:
 				System.out.println("Tecla no reconocida");
 				break;
 			}
+		repaint();
 	}
 	
 	class MyKeyListener implements KeyListener{

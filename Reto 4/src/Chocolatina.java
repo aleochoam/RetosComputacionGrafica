@@ -41,7 +41,7 @@ public class Chocolatina{
 	}
 
 	public Chocolatina escGrande(Chocolatina c1){
-		Escalacion esc = new Escalacion(10, 10);
+		Escalacion esc = new Escalacion(1.5, 1.5);
 		PuntoH2D[] puntos = c1.getPuntos();
 		PuntoH2D[] nuevosPuntos = new PuntoH2D[puntos.length];
 
@@ -53,7 +53,7 @@ public class Chocolatina{
 	}
 
 	public Chocolatina escPeque(Chocolatina c1){
-		Escalacion esc = new Escalacion(-10, -10);
+		Escalacion esc = new Escalacion(.75, .75);
 		PuntoH2D[] puntos = c1.getPuntos();
 		PuntoH2D[] nuevosPuntos = new PuntoH2D[puntos.length];
 
@@ -112,7 +112,7 @@ public class Chocolatina{
 		return new Chocolatina(nuevosPuntos);
 	}
 
-	public Chocolatina rotarReloj(Chocolatina c1){
+	public Chocolatina rotarAntiReloj(Chocolatina c1){
 		Rotacion rot = new Rotacion(10);
 		PuntoH2D[] puntos = c1.getPuntos();
 		PuntoH2D[] nuevosPuntos = new PuntoH2D[puntos.length];
@@ -124,7 +124,7 @@ public class Chocolatina{
 		return new Chocolatina(nuevosPuntos);
 	}
 
-	public Chocolatina rotarAntiReloj(Chocolatina c1){
+	public Chocolatina rotarReloj(Chocolatina c1){
 		Rotacion rot = new Rotacion(-10);
 		PuntoH2D[] puntos = c1.getPuntos();
 		PuntoH2D[] nuevosPuntos = new PuntoH2D[puntos.length];
