@@ -18,4 +18,14 @@ public class PuntoH3D{
 	public double[] getPunto(){
 		return punto;
 	}
+	
+	public void normalizeW(){
+		if(punto[3] == 0){
+			return;
+		}else{
+			for (int i = 0; i < punto.length; i++) {
+				punto[i] /= punto[3];
+			}
+		}
+	}
 }

@@ -1,7 +1,5 @@
 package Trasformaciones;
 
-import Maths.PuntoH3D;
-
 public class RotZ extends Rotacion {
 
 	public RotZ(double grado) {
@@ -13,11 +11,4 @@ public class RotZ extends Rotacion {
 		matriz[1][1] = Math.cos(rads);
 		matriz[2][2] = 1;
 	}
-
-	@Override
-	public PuntoH3D rotar(PuntoH3D p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
