@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.Rectangle2D;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -40,6 +41,8 @@ public class Mainclass extends JPanel{
 	}
 	
 	public Mainclass(){
+		addKeyListener(new MyKeyListener());
+		setFocusable(true);
 		choco = new Choco3D("test/test1.txt");
 	}
 	
@@ -50,6 +53,11 @@ public class Mainclass extends JPanel{
 		g2d = (Graphics2D) g;	
 		size = getSize();
 		java.awt.Insets insets = getInsets();
+		
+		g2d.setColor(Color.WHITE);
+		Rectangle2D r = new Rectangle2D.Double(0,0,w,h);
+		g2d.fill(r);
+		
        
 		w =  size.width - insets.left - insets.right;
 		h =  size.height - insets.top - insets.bottom;
@@ -61,7 +69,6 @@ public class Mainclass extends JPanel{
 	    g2d.setColor(Color.BLUE);
 	    
 	    pintarChocolate();
-	    //tomarPerspectiva();
 	}
 	
 	/**
@@ -118,6 +125,81 @@ public class Mainclass extends JPanel{
 		}
 	}
 	
+	/**
+	 * Metodo que decodifica las teclas que se introduce
+	 * w: subir la chocolatina
+	 * a: mover a izq
+	 * s: bajar
+	 * d: mover a der
+	 * z: alejar de pantalla
+	 * x: acercar a pantalla
+	 * q: rotar clockwize
+	 * e: rotar counter-cloclwize
+	 * 1: rotar izq
+	 * 4: rotar red
+	 * 2: rotar hacia adelante
+	 * 3: rotar hacia atras
+	 * @param c
+	 */
+	public void doMov(char c){
+		switch (c) {
+			case 'w':
+				choco.movArriba(10);
+				//System.out.println(c);
+				break;
+			case 'a':
+				choco.movIzq(10);
+				//System.out.println(c);
+				break;
+			case 's':
+				choco.movAbajo(10);
+				//System.out.println(c);
+				break;
+			case 'd':
+				choco.movDer(10);
+				//System.out.println(c);
+				break;
+			case 'q':
+				choco.movRotZ(10);
+				//System.out.println(c);
+				break;
+			case 'e':
+				choco.movRotMZ(10);
+				//System.out.println(c);
+				break;
+			case '+':
+				choco.escG(1.5);
+				//System.out.println(c);
+				break;
+			case '-':
+				choco.escP(1.5);
+				//System.out.println(c);
+				break;
+			case '1':
+				choco.movRotMX(10);
+				break;
+			case '4':
+				choco.movRotX(10);
+				break;
+			case '2':
+				choco.movRotMY(10);
+				break;
+			case '3':
+				choco.movRotY(10);
+				break;
+			case 'z':
+				choco.movAdelante(10);
+				break;
+			case 'x':
+				choco.movAtras(10);
+				break;
+			default:
+				System.out.println(c + " no es una tecla permitida");
+				break;
+			}
+		repaint();
+	}
+	
 	class MyKeyListener implements KeyListener{
 		private double d = 0;
 		@Override
@@ -128,7 +210,7 @@ public class Mainclass extends JPanel{
 
 		@Override
 		public void keyTyped(KeyEvent e) {
-			tomarPerspectiva(d+=10);
+			doMov(e.getKeyChar());
 			//System.out.println(e.getKeyChar());
 		}
 	}
