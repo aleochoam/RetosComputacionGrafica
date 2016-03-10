@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Rectangle2D;
@@ -23,7 +24,7 @@ import Trasformaciones.Traslacion;
 public class Mainclass extends JPanel{
 	
 	private Choco3D choco;
-	private int d = 10;
+	private int d = -270;
 
 	private Graphics2D g2d;
 	private Dimension size;
@@ -52,7 +53,7 @@ public class Mainclass extends JPanel{
 		
 		g2d = (Graphics2D) g;	
 		size = getSize();
-		java.awt.Insets insets = getInsets();
+		Insets insets = getInsets();
 		
 		g2d.setColor(Color.WHITE);
 		Rectangle2D r = new Rectangle2D.Double(0,0,w,h);
@@ -68,6 +69,7 @@ public class Mainclass extends JPanel{
 	    g2d.drawLine(0, h/2, w, h/2);
 	    g2d.setColor(Color.BLUE);
 	    
+	    choco.tomarPerspectiva(d);
 	    pintarChocolate();
 	}
 	
@@ -85,33 +87,12 @@ public class Mainclass extends JPanel{
         g2d.drawLine(x1, y1, x2, y2);
     }
 	
-	public void tomarPerspectiva(double d){
-		Matriz3D m = new Perspectiva(d);
-		transform(m);
-		//repaint();
-	}
-	
-	public void rotar(){
-		Matriz3D m = new Traslacion(100,100,0);
-		transform(m);
-		
-	}
-	
-	public void transform(Matriz3D m){
-		PuntoH3D[] puntos = choco.getPuntos();
-		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
-		
-		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
-		}
-		choco = new Choco3D(nuevosPuntos);
-		pintarChocolate();
-	}
-	
 	public void pintarChocolate(){
 		PuntoH3D[] puntos = choco.getPuntos();
 		for (int i = 0; i < puntos.length; i++) {
+			System.out.println("Antes: " + puntos[i]);
 			puntos[i].normalizeW();
+			System.out.println("Despues: " + puntos[i]);
 		}
 		int[][] aristas = Choco3D.aristas;
 		
@@ -193,6 +174,9 @@ public class Mainclass extends JPanel{
 			case 'x':
 				choco.movAtras(10);
 				break;
+			case 'p':
+				choco.tomarPerspectiva(d);
+				break;
 			default:
 				System.out.println(c + " no es una tecla permitida");
 				break;
@@ -201,7 +185,6 @@ public class Mainclass extends JPanel{
 	}
 	
 	class MyKeyListener implements KeyListener{
-		private double d = 0;
 		@Override
 		public void keyPressed(KeyEvent e) {}
 

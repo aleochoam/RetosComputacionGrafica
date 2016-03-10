@@ -9,8 +9,7 @@ public class Perspectiva extends Matriz3D {
 		matriz[0][0] = 1;
 		matriz[1][1] = 1;
 		matriz[2][2] = 1;
-		matriz[2][3] = 1/d;
-		
+		matriz[3][2] = 1/d;
 	}
 
 }

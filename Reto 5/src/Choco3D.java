@@ -1,5 +1,4 @@
 import Trasformaciones.*;
-import Maths.PuntoH2D;
 import Maths.PuntoH3D;
 
 import java.io.FileNotFoundException;
@@ -22,6 +21,24 @@ public class Choco3D {
 								           {1,9},
 								           {2,10},
 								           {3,11}};
+	/*
+	public static final int[][] aristas = {{0,1},
+									           {1,2},
+									           {2,3},
+									           {3,0},
+									           {4,5},
+									           {5,6},
+									           {6,7},
+									           {7,4},
+									           {0,4},
+									           {1,5},
+									           {2,6},
+									           {3,7},
+									           {1,8},
+									           {5,8},
+									           {6,8},
+									           {2,8}};
+		*/
 	public Choco3D(String archivo){
 		initMatrix(archivo);
 	}
@@ -34,6 +51,7 @@ public class Choco3D {
 		int[][] puntos = new int[16][3];
 		try {
 			puntos = LectorArchivo.getPuntos(archivo);
+			//puntos = LectorArchivo.getPuntosEjemplo(archivo);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -208,6 +226,18 @@ public class Choco3D {
 		}
 		this.puntosH3D = nuevosPuntos;
 
+	}
+	
+	public void tomarPerspectiva(double d){
+		Perspectiva m = new Perspectiva(d);
+		PuntoH3D[] puntos = this.getPuntos();
+		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
+
+		for (int i = 0; i < puntos.length; i++) {
+			nuevosPuntos[i] = m.tranformar(puntos[i]);
+		}
+		this.puntosH3D = nuevosPuntos;
+		
 	}
 	
 	public PuntoH3D[] getPuntos() {
