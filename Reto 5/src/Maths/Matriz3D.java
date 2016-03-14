@@ -2,13 +2,17 @@ package Maths;
 
 public class Matriz3D {
 
-    protected double[][] matriz = new double[4][4];
+    protected double[][] matriz;
 
     public double[][] getMatriz(){
         return matriz;
     }
     
     public Matriz3D(){
+    	matriz = new double [4][4];
+        for(int i = 0; i < 4; i++) {
+            matriz[i][i] = 1d;
+        }
     	
     }
     
@@ -32,17 +36,38 @@ public class Matriz3D {
                     }
                 }
             }
+//            double w = result[3][0];
+//            if(w != 1) {
+//                for(int i = 0; i < 4; i++) {
+//                	result[i][0] = result[i][0]/w;
+//                }
+//            }
         }
+        
         return result;
     }
     
-    public PuntoH3D tranformar(PuntoH3D p){
-    	double[][] temp = new double[4][1];
-    	temp[0][0] = p.getPunto()[0];
-    	temp[1][0] = p.getPunto()[1];
-    	temp[2][0] = p.getPunto()[2];
-    	temp[3][0] = p.getPunto()[3];
-    	double[][] nuevoPunto = multiplicar(matriz,  temp);
-    	return new PuntoH3D(nuevoPunto[0][0], nuevoPunto[1][0], nuevoPunto[2][0], 1);
+    public static PuntoH3D multiplicar(double[][] matrix, PuntoH3D punto) {
+        PuntoH3D nuevoPunto = new PuntoH3D(0, 0, 0, 0);
+        for(int i = 0; i < 4; i++) {
+            double acum = 0;
+            for(int j = 0; j < 4; j++) {
+                acum += matrix[i][j] * punto.getPunto()[j];
+            }
+            nuevoPunto.getPunto()[i] = acum;
+        }
+        double w = nuevoPunto.getPunto()[3];
+        if(w != 1) {
+            for(int i = 0; i < 4; i++) {
+                nuevoPunto.getPunto()[i] = nuevoPunto.getPunto()[i]/w;
+            }
+        }
+        return nuevoPunto;
     }
+
+    public PuntoH3D transformar(PuntoH3D p){
+    	return multiplicar(matriz, p);
+    }
+    
+    
 }

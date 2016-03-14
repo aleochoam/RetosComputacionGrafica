@@ -68,7 +68,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 	}
@@ -79,7 +79,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 	}
@@ -90,7 +90,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
@@ -102,7 +102,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
@@ -114,7 +114,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
@@ -126,7 +126,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
@@ -138,7 +138,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
@@ -150,7 +150,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 		
@@ -162,7 +162,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
@@ -174,7 +174,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
@@ -186,7 +186,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
@@ -198,7 +198,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
@@ -210,7 +210,7 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
@@ -222,21 +222,21 @@ public class Choco3D {
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
 		this.puntosH3D = nuevosPuntos;
 
 	}
 	
-	public void tomarPerspectiva(double d){
+	public Choco3D tomarPerspectiva(double d){
 		Perspectiva m = new Perspectiva(d);
 		PuntoH3D[] puntos = this.getPuntos();
 		PuntoH3D[] nuevosPuntos = new PuntoH3D[puntos.length];
 
 		for (int i = 0; i < puntos.length; i++) {
-			nuevosPuntos[i] = m.tranformar(puntos[i]);
+			nuevosPuntos[i] = m.transformar(puntos[i]);
 		}
-		this.puntosH3D = nuevosPuntos;
+		return new Choco3D(nuevosPuntos);
 		
 	}
 	

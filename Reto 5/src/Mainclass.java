@@ -24,6 +24,8 @@ import Trasformaciones.Traslacion;
 public class Mainclass extends JPanel{
 	
 	private Choco3D choco;
+	private Choco3D chocoMod;
+	
 	private int d = -270;
 
 	private Graphics2D g2d;
@@ -69,8 +71,9 @@ public class Mainclass extends JPanel{
 	    g2d.drawLine(0, h/2, w, h/2);
 	    g2d.setColor(Color.BLUE);
 	    
-	    choco.tomarPerspectiva(d);
+	    chocoMod = choco.tomarPerspectiva(d);
 	    pintarChocolate();
+
 	}
 	
 	/**
@@ -88,24 +91,19 @@ public class Mainclass extends JPanel{
     }
 	
 	public void pintarChocolate(){
-		PuntoH3D[] puntos = choco.getPuntos();
-		for (int i = 0; i < puntos.length; i++) {
-			System.out.println("Antes: " + puntos[i]);
-			puntos[i].normalizeW();
-			System.out.println("Despues: " + puntos[i]);
-		}
+		PuntoH3D[] puntos = chocoMod.getPuntos();
 		int[][] aristas = Choco3D.aristas;
 		
 		for (int i = 0; i < aristas.length; i++) {
+			
 			PuntoH3D p1 = puntos[aristas[i][0]];
 			PuntoH3D p2 = puntos[aristas[i][1]];
-			
+			System.out.println(p1 + "\n" + p2 + "\n");
 			drawOneLine((int)p1.getPunto()[0],(int)p1.getPunto()[1], 
 					(int)p2.getPunto()[0],(int)p2.getPunto()[1]);
 			
 		}
-	}
-	
+	}	
 	/**
 	 * Metodo que decodifica las teclas que se introduce
 	 * w: subir la chocolatina
@@ -126,35 +124,27 @@ public class Mainclass extends JPanel{
 		switch (c) {
 			case 'w':
 				choco.movArriba(10);
-				//System.out.println(c);
 				break;
 			case 'a':
 				choco.movIzq(10);
-				//System.out.println(c);
 				break;
 			case 's':
 				choco.movAbajo(10);
-				//System.out.println(c);
 				break;
 			case 'd':
 				choco.movDer(10);
-				//System.out.println(c);
 				break;
 			case 'q':
 				choco.movRotZ(10);
-				//System.out.println(c);
 				break;
 			case 'e':
 				choco.movRotMZ(10);
-				//System.out.println(c);
 				break;
 			case '+':
 				choco.escG(1.5);
-				//System.out.println(c);
 				break;
 			case '-':
 				choco.escP(1.5);
-				//System.out.println(c);
 				break;
 			case '1':
 				choco.movRotMX(10);
@@ -174,9 +164,8 @@ public class Mainclass extends JPanel{
 			case 'x':
 				choco.movAtras(10);
 				break;
-			case 'p':
-				choco.tomarPerspectiva(d);
-				break;
+			case KeyEvent.VK_ESCAPE:
+				System.exit(0);
 			default:
 				System.out.println(c + " no es una tecla permitida");
 				break;
