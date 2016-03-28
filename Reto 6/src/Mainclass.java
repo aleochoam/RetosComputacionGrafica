@@ -12,7 +12,11 @@ import javax.swing.JPanel;
 
 import Maths.Matriz3D;
 import Maths.PuntoH3D;
+import Trasformaciones.Escalamiento;
 import Trasformaciones.Perspectiva;
+import Trasformaciones.RotX;
+import Trasformaciones.RotY;
+import Trasformaciones.RotZ;
 import Trasformaciones.Traslacion;
 
 /**
@@ -23,10 +27,11 @@ import Trasformaciones.Traslacion;
  */
 public class Mainclass extends JPanel{
 	
-	private Choco3D choco;
-	private Choco3D chocoMod;
+	private Camara camara;
+	private Chocolatina choco;
+	private Chocolatina chocoMod;
 	
-	private int d = -270;
+	public static int d;
 
 	private Graphics2D g2d;
 	private Dimension size;
@@ -46,7 +51,7 @@ public class Mainclass extends JPanel{
 	public Mainclass(){
 		addKeyListener(new MyKeyListener());
 		setFocusable(true);
-		choco = new Choco3D("test/test2.txt");
+		choco = LectorArchivo.leerArchivo("test/objeto3D.txt");
 	}
 	
 	@Override
@@ -92,7 +97,7 @@ public class Mainclass extends JPanel{
 	
 	public void pintarChocolate(){
 		PuntoH3D[] puntos = chocoMod.getPuntos();
-		int[][] aristas = Choco3D.aristas;
+		int[][] aristas = choco.getAristas();
 		
 		for (int i = 0; i < aristas.length; i++) {
 			
@@ -104,6 +109,7 @@ public class Mainclass extends JPanel{
 			
 		}
 	}	
+	
 	/**
 	 * Metodo que decodifica las teclas que se introduce
 	 * w: subir la chocolatina
@@ -121,48 +127,50 @@ public class Mainclass extends JPanel{
 	 * @param c
 	 */
 	public void doMov(char c){
+	    Matriz3D m = new Matriz3D();
+	    int x = 10;
 		switch (c) {
 			case 'w':
-				choco.movArriba(10);
-				break;
-			case 'a':
-				choco.movIzq(10);
+			    m = new Traslacion(0, x, 0);
 				break;
 			case 's':
-				choco.movAbajo(10);
+			    m = new Traslacion(0, -x, 0);
+			    break;
+			case 'a':
+			    m = new Traslacion(x, 0, 0);
 				break;
 			case 'd':
-				choco.movDer(10);
-				break;
+			    m = new Traslacion(-x, 0, 0);
+			    break;
 			case 'q':
-				choco.movRotZ(10);
+				m = new RotZ(x);
 				break;
 			case 'e':
-				choco.movRotMZ(10);
-				break;
-			case '+':
-				choco.escG(1.5);
+				m = new RotZ(-x);
 				break;
 			case '-':
-				choco.escP(1.5);
+				m = new Escalamiento(1/x, 1/x, 1/x);
+				break;
+			case '+':
+				m = new Escalamiento(x, x, x);
 				break;
 			case '1':
-				choco.movRotMX(10);
+				m = new RotX(-x);
 				break;
 			case '4':
-				choco.movRotX(10);
+				m = new RotX(x);
 				break;
 			case '2':
-				choco.movRotMY(10);
+				m = new RotY(-x);
 				break;
 			case '3':
-				choco.movRotY(10);
+				m = new RotY(x);
 				break;
 			case 'z':
-				choco.movAdelante(10);
+				m = new Traslacion(0, 0, x);
 				break;
 			case 'x':
-				choco.movAtras(10);
+				m = new Traslacion(0, 0, -x);
 				break;
 			case KeyEvent.VK_ESCAPE:
 				System.exit(0);
@@ -170,6 +178,7 @@ public class Mainclass extends JPanel{
 				System.out.println(c + " no es una tecla permitida");
 				break;
 			}
+		choco.transformar(m);
 		repaint();
 	}
 	

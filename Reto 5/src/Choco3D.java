@@ -4,8 +4,8 @@ import Maths.PuntoH3D;
 import java.io.FileNotFoundException;
 
 public class Choco3D {
-	private PuntoH3D[] puntosH3D = new PuntoH3D[16];
-	public static final int[][] aristas = {{0,1},
+	private PuntoH3D[] puntosH3D = new PuntoH3D[9];
+	/*public static final int[][] aristas = {{0,1},
 								           {1,2},
 								           {2,3},
 								           {3,0},
@@ -21,7 +21,7 @@ public class Choco3D {
 								           {1,9},
 								           {2,10},
 								           {3,11}};
-	/*
+	*/
 	public static final int[][] aristas = {{0,1},
 									           {1,2},
 									           {2,3},
@@ -38,7 +38,7 @@ public class Choco3D {
 									           {5,8},
 									           {6,8},
 									           {2,8}};
-		*/
+		
 	public Choco3D(String archivo){
 		initMatrix(archivo);
 	}
@@ -48,10 +48,10 @@ public class Choco3D {
 	}
 
 	public void initMatrix(String archivo){
-		int[][] puntos = new int[16][3];
+		int[][] puntos = new int[9][3];
 		try {
-			puntos = LectorArchivo.getPuntos(archivo);
-			//puntos = LectorArchivo.getPuntosEjemplo(archivo);
+			//puntos = LectorArchivo.getPuntos(archivo);
+			puntos = LectorArchivo.getPuntosEjemplo(archivo);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
