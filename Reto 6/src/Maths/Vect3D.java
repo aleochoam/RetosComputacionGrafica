@@ -2,7 +2,7 @@ package Maths;
 
 public class Vect3D {
 
-    private double[] componentes = new double[3];
+    protected double[] componentes = new double[3];
 
     public Vect3D(double x, double y, double z){
         this.componentes[0] = x;
@@ -61,6 +61,17 @@ public class Vect3D {
     	double z = (v1.getComp()[0] * v2.getComp()[1]) -
     			(v1.getComp()[1] * v2.getComp()[0]);
     	return new Vect3D(x,y,z);
+    }
+    
+    public double magnitude() {
+        return Math.sqrt(componentes[0]*componentes[0] + componentes[1]*componentes[1] + componentes[2]*componentes[2]);
+    }
+    
+    public void normalize() {
+        double mag = this.magnitude();
+        componentes[0] /= mag;
+        componentes[1] /= mag;
+        componentes[2] /= mag;
     }
 
     public String toString() {
