@@ -35,9 +35,9 @@ public class MatrizUVN extends Matriz3D {
         matriz[3][1] = 0;
         matriz[3][2] = 0;
         
-        double dx = VectH3D.productoPunto(u, camPos);
-        double dy = VectH3D.productoPunto(v, camPos);
-        double dz = VectH3D.productoPunto(v, camPos);
+        double dx = - VectH3D.productoPunto(u, camPos);
+        double dy = - VectH3D.productoPunto(v, camPos);
+        double dz = - VectH3D.productoPunto(n, camPos);
         
         matriz[0][3] = dx;
         matriz[1][3] = dy;

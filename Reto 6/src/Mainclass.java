@@ -83,7 +83,13 @@ public class Mainclass extends JPanel{
                 new VectH3D(0, 0, -350),        // look-at 
                 new VectH3D(0, 0, -1)            // up vector
         );
-        chocoMod = choco.tomarPerspectiva(m);
+	    
+	    MatrizUVN m1 = new MatrizUVN(
+                new VectH3D(200, 100, -200),    // camera position
+                new VectH3D(0, 0, -350),        // look-at 
+                new VectH3D(0, 1, 0)            // up vector
+        );
+        chocoMod = choco.tomarPerspectiva(m1);
 	    pintarChocolate();
 
 	}
@@ -198,7 +204,7 @@ public class Mainclass extends JPanel{
 
 		@Override
 		public void keyTyped(KeyEvent e) {
-			doMov(e.getKeyChar());
+			//doMov(e.getKeyChar());
 			//System.out.println(e.getKeyChar());
 		}
 	}
