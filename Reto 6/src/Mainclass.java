@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 
 import Maths.Matriz3D;
 import Maths.PuntoH3D;
+import Maths.VectH3D;
 import Trasformaciones.Escalamiento;
+import Trasformaciones.MatrizUVN;
 import Trasformaciones.Perspectiva;
 import Trasformaciones.RotX;
 import Trasformaciones.RotY;
@@ -51,7 +53,7 @@ public class Mainclass extends JPanel{
 	public Mainclass(){
 		addKeyListener(new MyKeyListener());
 		setFocusable(true);
-		choco = LectorArchivo.leerArchivo("test/objeto3D.txt");
+		choco = LectorArchivo.leerArchivo("test/test1.txt");
 	}
 	
 	@Override
@@ -76,7 +78,12 @@ public class Mainclass extends JPanel{
 	    g2d.drawLine(0, h/2, w, h/2);
 	    g2d.setColor(Color.BLUE);
 	    
-	    chocoMod = choco.tomarPerspectiva(d);
+	    MatrizUVN m = new MatrizUVN(
+                new VectH3D(200, 100, -200),    // camera position
+                new VectH3D(0, 0, -350),        // look-at 
+                new VectH3D(0, 0, -1)            // up vector
+        );
+        chocoMod = choco.tomarPerspectiva(m);
 	    pintarChocolate();
 
 	}
@@ -103,7 +110,7 @@ public class Mainclass extends JPanel{
 			
 			PuntoH3D p1 = puntos[aristas[i][0]];
 			PuntoH3D p2 = puntos[aristas[i][1]];
-			System.out.println(p1 + "\n" + p2 + "\n");
+			//System.out.println(p1 + "\n" + p2 + "\n");
 			drawOneLine((int)p1.getPunto()[0],(int)p1.getPunto()[1], 
 					(int)p2.getPunto()[0],(int)p2.getPunto()[1]);
 			
@@ -137,10 +144,10 @@ public class Mainclass extends JPanel{
 			    m = new Traslacion(0, -x, 0);
 			    break;
 			case 'a':
-			    m = new Traslacion(x, 0, 0);
+			    m = new Traslacion(-x, 0, 0);
 				break;
 			case 'd':
-			    m = new Traslacion(-x, 0, 0);
+			    m = new Traslacion(x, 0, 0);
 			    break;
 			case 'q':
 				m = new RotZ(x);
@@ -149,10 +156,10 @@ public class Mainclass extends JPanel{
 				m = new RotZ(-x);
 				break;
 			case '-':
-				m = new Escalamiento(1/x, 1/x, 1/x);
+				m = new Escalamiento(1/1.5, 1/1.5, 1/1.5);
 				break;
 			case '+':
-				m = new Escalamiento(x, x, x);
+				m = new Escalamiento(1.5, 1.5, 1.5);
 				break;
 			case '1':
 				m = new RotX(-x);
@@ -160,10 +167,10 @@ public class Mainclass extends JPanel{
 			case '4':
 				m = new RotX(x);
 				break;
-			case '2':
+			case '3':
 				m = new RotY(-x);
 				break;
-			case '3':
+			case '2':
 				m = new RotY(x);
 				break;
 			case 'z':
