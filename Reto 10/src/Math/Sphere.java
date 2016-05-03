@@ -13,7 +13,7 @@ import Scene.Shader;
  *
  * @author htrefftz
  */
-public class Sphere {
+public class Sphere implements Figure {
     Point center;
     double radius;
     Material material;

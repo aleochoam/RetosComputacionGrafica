@@ -11,6 +11,7 @@ import Math.Triangle;
 import Math.Ray;
 import Math.Solutions;
 import Math.Vector4;
+import Math.Figure;
 import Math.Point;
 
 /**
@@ -53,6 +54,10 @@ public class Scene {
     public static void addSphere(Sphere mySphere) {
         spheres.add(mySphere);
     }
+    
+    public static void addTriangle(Triangle t){
+    	triangles.add(t);
+    }
 
     /**
      * Compute the color of the closest object in the Scene this ray 
@@ -62,7 +67,8 @@ public class Scene {
      */
     public static Colour intersectRay(Ray ray) {
         double minT = Double.MAX_VALUE;
-        Sphere closest = null;
+        
+        Figure closest = null;
         // Chose the closest surface
         for(Sphere sphere: spheres) {
             Solutions s = Sphere.intersect(sphere, ray);
@@ -77,6 +83,14 @@ public class Scene {
                     }
                 }
             }
+        }
+        for(Triangle triangle: triangles){
+        	Solutions s = Triangle.interect(triangle, ray);
+        	if (s.getNumSolutions() > 0) {
+	        	if(s.getT1() < minT){
+	        		closest = triangle;
+	        	}
+        	}
         }
         if(closest != null) {
             Colour acum  = new Colour(0, 0, 0);

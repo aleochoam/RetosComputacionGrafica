@@ -45,7 +45,7 @@ public class Main extends JPanel {
         PointLight pl2 = new PointLight(new Point(+100, 100, 0), new Colour(1, 1, 1));
         Scene.addPointLight(pl1);
         //Scene.addPointLight(pl2);
-        /*
+        
         // A red reflective sphere
         double Ka = 0.2;        // ambient
         double Kd = 0.8;        // difuse
@@ -73,20 +73,21 @@ public class Main extends JPanel {
         
         Sphere sp2 = new Sphere(new Point(+25, 0, -100), 20, material2);
         Scene.addSphere(sp2);        
-        */
+        
         
         //First triangle in center
-        double Ka = 0.2;        // ambient
-        double Kd = 0.8;        // difuse
-        double Ks = 0.8;          // specular
-        int n = 16;
-        Colour color = new Colour(1, 0, 0);     // object's color
-        double Ko = .3;          // Weight of this object's color
-        double Kr = .7;          // Weight of the reflected color
-        double Kt = 0;          // Weight of the refracted color
-        Material material1 = new Material(Ka, Kd, Ks, n, color, Ko, Kr, Kt);
+        Ka = 0.2;        // ambient
+        Kd = 0.8;        // difuse
+        Ks = 0.0;          // specular
+        n = 16;
+        color = new Colour(1, 1, 0);     // object's color
+        Ko = 1;          // Weight of this object's color
+        Kr = 0;          // Weight of the reflected color
+        Kt = 0;          // Weight of the refracted color
+        Material material3 = new Material(Ka, Kd, Ks, n, color, Ko, Kr, Kt);
         
-        Triangle t1 = new Triangle(new Point (), p2, p3, material)
+        Triangle t1 = new Triangle(new Point (-25, -25, -90), new Point (0, 25, -90), new Point (+25, -25, -90), material3);
+        Scene.addTriangle(t1);
     }
     
     public void paintComponent(Graphics g) {

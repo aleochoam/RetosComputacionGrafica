@@ -4,7 +4,7 @@ import Scene.Colour;
 import Scene.Material;
 import Scene.Shader;
 
-public class Triangle {
+public class Triangle implements Figure{
 	Point p1;
 	Point p2;
 	Point p3;
@@ -18,7 +18,7 @@ public class Triangle {
 		this.material = material;
 	}
 	
-	public static Point interect(Triangle triangle, Ray ray){
+	public static Solutions interect(Triangle triangle, Ray ray){
 		double[][] coefficients = {{-(ray.getU().getX()), (triangle.p2.x-triangle.p1.x), (triangle.p3.x-triangle.p1.x)},
 								   {-(ray.getU().getY()), (triangle.p2.y-triangle.p1.y), (triangle.p3.y-triangle.p1.y)},
 								   {-(ray.getU().getZ()), (triangle.p2.z-triangle.p1.z), (triangle.p3.z-triangle.p1.z)}};
@@ -38,10 +38,10 @@ public class Triangle {
 	        beta  <= 1 &&
 	        gamma >= 0 &&
 	        alpha <= 1 ) {
-            return ray.evaluate(s);
+            return new Solutions(1, s, 0);
         }
 		else{
-		    return null;
+		    return new Solutions(0, 0, 0);
 		}
 	}
 	
@@ -57,7 +57,7 @@ public class Triangle {
         Point point = ray.evaluate(minT);
         Vector4 ab = new Vector4(p1, p2);
         Vector4 ac = new Vector4(p1, p3);
-        Vector4 normal = Vector4.crossProduct(ab, ac);
+        Vector4 normal = Vector4.crossProduct(ac, ab);
         normal.normalize();
         return Shader.computeColor(point, normal, material);
     }
