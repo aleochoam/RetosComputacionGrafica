@@ -69,5 +69,16 @@ public class Matriz3D {
     	return multiplicar(matriz, p);
     }
     
+    public String toString(){
+        String str = "";
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                str+=matriz[i][j] + ", ";
+            }
+            str += "\n";
+        }
+        return str;
+    }
+    
     
 }

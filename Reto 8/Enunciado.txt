@@ -1,0 +1,2 @@
+unity o blender coger el objeto y ponerle una textura, tomar un screenshot
+antes de ponerle la textura y despues de ponerle la textura
