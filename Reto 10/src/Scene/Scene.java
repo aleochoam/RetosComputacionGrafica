@@ -27,8 +27,8 @@ public class Scene {
     static ArrayList<Sphere> spheres = new ArrayList<>();
     static ArrayList<Triangle> triangles = new ArrayList<>();
     // Bacground color
-    static final Colour BACKGROUNDCOLOR = new Colour(0.7, 0.7, 0.9);
-    //static final Colour BACKGROUNDCOLOR = new Colour(0.2, 0.2, 0.2);
+    //static final Colour BACKGROUNDCOLOR = new Colour(0.7, 0.7, 0.9);
+    static final Colour BACKGROUNDCOLOR = new Colour(0.2, 0.2, 0.2);
     //static final Colour BACKGROUNDCOLOR = new Colour(.1, 0.74 , 1);
     
     /**
@@ -85,9 +85,10 @@ public class Scene {
             }
         }
         for(Triangle triangle: triangles){
-        	Solutions s = Triangle.interect(triangle, ray);
+        	Solutions s = Triangle.intersect(triangle, ray);
         	if (s.getNumSolutions() > 0) {
 	        	if(s.getT1() < minT){
+                    minT = s.getT1();
 	        		closest = triangle;
 	        	}
         	}
